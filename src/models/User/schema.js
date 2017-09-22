@@ -10,6 +10,7 @@ type User {
 
 type Query {
   users: [User]
+  user(id: Int!): User
 }
 
 type Mutation {

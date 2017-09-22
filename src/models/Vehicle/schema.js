@@ -9,6 +9,7 @@ type Vehicle {
 
 type Query {
   vehicles: [Vehicle]
+  vehicle(id: Int!): Vehicle
 }
 
 type Mutation {

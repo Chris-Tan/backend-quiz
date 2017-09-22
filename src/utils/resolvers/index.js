@@ -2,6 +2,13 @@ import db from '../../db'
 
 export const Resolvers = {
   Query: {
+    find: (Model) => (unusedFirstParameter, args, context) => {
+      return db.get(Model.name).find(function (element, index) {
+        if (element.id === args.id)
+          return true
+        return false
+      })
+    },
     list: (Model) => (unusedFirstParameter, args, context) => {
       return db.get(Model.name)
     },
