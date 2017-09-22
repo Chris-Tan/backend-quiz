@@ -10,6 +10,9 @@ export default {
     deleteUser: Resolvers.Mutation.delete(Model),
   },
   User: {
+    displayName: (obj, args, context) => {
+      return obj.firstName + " " + ((obj.lastName) ? obj.lastName.charAt(0) + "." : "")
+    },
     vehicles: (obj, args, context) => {
       return db.get('Vehicle').filter(vehicle => vehicle.userId === obj.id)
     },
