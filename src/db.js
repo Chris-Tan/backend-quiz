@@ -11,8 +11,10 @@ class Database {
   }
 
   set(modelName, datum) {
-    // You should write this method
-    // and use it for inserts and updates
+    var data = this.data[modelName]
+    // Note: not writing to file or else will have issues on subsequent test runs
+    data[datum.id] = datum
+    return data[datum.id]
   }
 
   delete(modelName, datum) {

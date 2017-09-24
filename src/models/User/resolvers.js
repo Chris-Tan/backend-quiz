@@ -26,7 +26,7 @@ export default {
         }
       }).sort((a, b) => (b.spend - a.spend))
       if (args.top)
-        result = result.slice(0, args.top)
+        return result.slice(0, args.top)
       return result
     }
   },
