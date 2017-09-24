@@ -12,6 +12,12 @@ type User {
 type Query {
   users: [User]
   user(id: Int!): User
+  profitableUsers(top: Int): [UserSpend]
+}
+
+type UserSpend {
+  spend: Int!
+  user: User
 }
 
 type Mutation {
