@@ -18,15 +18,15 @@ type Mutation {
 }
 
 input CreateVehicleInput {
-  make: String
   model: String
+  make: String
   year: Int
 }
 
 input UpdateVehicleInput {
   id: Int!
-  make: String
   model: String
+  make: String
   year: Int
 }
 
