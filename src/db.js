@@ -10,11 +10,29 @@ class Database {
     return this.data[modelName].map(m => new model(m))
   }
 
+  // Note: not writing to file or else will have issues on subsequent test runs
   set(modelName, datum) {
-    var data = this.data[modelName]
-    // Note: not writing to file or else will have issues on subsequent test runs
-    data[datum.id] = datum
-    return data[datum.id]
+    let data = this.data[modelName]
+    var index
+    var newItem
+    // Creating item
+    if (!datum.id) {
+      newItem = datum
+      newItem.id = data.length + 1
+      index = data.push(newItem) - 1
+    }
+    // Updating item
+    else {
+      index = data.findIndex(e => e.id === datum.id)
+      if (index === -1)
+        throw new Error('Unable to update nonexistant "id".')
+      newItem = data[index]
+      for (var key in datum) {
+        newItem[key] = datum[key]
+      }
+      data[index] = newItem
+    }
+    return data[index]
   }
 
   delete(modelName, datum) {

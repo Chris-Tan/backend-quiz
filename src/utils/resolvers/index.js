@@ -16,9 +16,10 @@ export const Resolvers = {
   Mutation: {
     create: (Model, args) => {
       const { input, } = args
-      if (input.id)
-        throw new Error(`Can't save new object with "id". Did you mean to "update"?`)
-      input.id = db.get(Model.name).length + 1
+      return db.set(Model.name, input)
+    },
+    update: (Model, args) => {
+      const { input, } = args
       return db.set(Model.name, input)
     },
     delete: (Model) => (obj, args) => {
